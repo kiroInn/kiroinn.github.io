@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>kubectl-cli | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="kubectl命令行kubectl作为客户端的CLI工具，可以让用户通过命令对kubernetes集群进行操作。 kubectl语法$ kubectl [command] [type] [name] [flags]  command: 子命令，用于操作kubernetes集群资源对象的命令, create、delete、describe、get、apply、etc. type: 资源对象的类型。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kubectl-cli">
+<meta property="og:url" content="http://yoursite.com/2020/04/24/kubectl-cli/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="kubectl命令行kubectl作为客户端的CLI工具，可以让用户通过命令对kubernetes集群进行操作。 kubectl语法$ kubectl [command] [type] [name] [flags]  command: 子命令，用于操作kubernetes集群资源对象的命令, create、delete、describe、get、apply、etc. type: 资源对象的类型。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-24T15:05:40.000Z">
+<meta property="article:modified_time" content="2020-04-24T15:06:26.118Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="k8s">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-kubectl-cli" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/24/kubectl-cli/" class="article-date">
+  <time datetime="2020-04-24T15:05:40.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      kubectl-cli
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="kubectl命令行"><a href="#kubectl命令行" class="headerlink" title="kubectl命令行"></a>kubectl命令行</h1><p>kubectl作为客户端的CLI工具，可以让用户通过命令对kubernetes集群进行操作。</p>
+<h2 id="kubectl语法"><a href="#kubectl语法" class="headerlink" title="kubectl语法"></a>kubectl语法</h2><p><code>$ kubectl [command] [type] [name] [flags]</code></p>
+<ul>
+<li>command: 子命令，用于操作kubernetes集群资源对象的命令, create、delete、describe、get、apply、etc.</li>
+<li>type: 资源对象的类型。</li>
+<li>name: 资源对象的名称。</li>
+<li>flags: 子命令可选参数。</li>
+</ul>
+<h3 id="一条命令同时对多个资源对象进行操作"><a href="#一条命令同时对多个资源对象进行操作" class="headerlink" title="一条命令同时对多个资源对象进行操作"></a>一条命令同时对多个资源对象进行操作</h3><ul>
+<li><code>$ kubectl get pods pod1 pod2</code></li>
+<li><code>$ kubectl get pod/pod1 rc/rc1</code></li>
+<li><code>$ kubectl create -f pod1.yaml -f rc1.yaml -f server1.yaml</code></li>
+</ul>
+<h2 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h2><ul>
+<li>创建资源对象<ul>
+<li><code>$ kubectl create -f my-service.yaml -f my-rc.yaml</code></li>
+<li><code>$ kubectl create -f &lt;directory&gt;</code></li>
+</ul>
+</li>
+<li>查看资源对象<ul>
+<li><code>$ kubectl get pods</code></li>
+<li><code>$ kubectl get rc,service</code></li>
+</ul>
+</li>
+<li>描述资源对象<ul>
+<li><code>$ kubectl describe nodes &lt;node-name&gt;</code></li>
+<li><code>$ kubectl describe pods/&lt;pod-name&gt;</code></li>
+<li><code>$ kubectl describe pods &lt;rc-name&gt;</code></li>
+</ul>
+</li>
+<li>删除资源对象<ul>
+<li><code>$ kubectl delete -f pod.yaml</code></li>
+<li><code>$ kubectl delete pods,services -l name=&lt;label-name&gt;</code></li>
+<li><code>$ kubectl delete pods --all</code></li>
+</ul>
+</li>
+<li>执行容器命令<ul>
+<li><code>$ kubectl exec &lt;pod-name&gt; date</code></li>
+<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; date</code></li>
+<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; /bin/bash</code></li>
+</ul>
+</li>
+<li>查看容器日志<ul>
+<li><code>$ kubectl logs &lt;pod-name&gt;</code></li>
+<li><code>$ kubectl logs -f &lt;pod-name&gt; -c &lt;container-name&gt;</code></li>
+</ul>
+</li>
+<li>创建/更新资源对象<ul>
+<li><code>$ kubectl apply -f app.yaml</code></li>
+</ul>
+</li>
+<li>在线编辑运行中的资源对象<ul>
+<li><code>$ kubectl edit deploy nginx</code></li>
+</ul>
+</li>
+<li>将Pod的开放端口映射到本地<ul>
+<li><code>$ kubectl port-forward --address 0.0.0.0 pod/nginx-6ddbbc47fb-sfdcv 8888:80</code></li>
+</ul>
+</li>
+<li>在Pod和本地之间复制文件<ul>
+<li><code>$ kubectl cp nginx-6ddbbc47fb-sfdcv:/etc/fstab /tmp</code></li>
+</ul>
+</li>
+<li>资源对象的标签设置<ul>
+<li><code>$ kubectl label namespace default testing=true</code></li>
+</ul>
+</li>
+<li>检查可用的API资源类型列表<ul>
+<li><code>$ kubectl api-resources</code><h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><code>$ kubectl help</code></br><br>在日常使用中多使用help来寻求帮助:)</li>
+</ul>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/24/kubectl-cli/" data-id="ck9ec562z0000s0hc032l14wv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/24/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/k8s/" style="font-size: 10px;">k8s</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/24/kubectl-cli/">kubectl-cli</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/24/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
