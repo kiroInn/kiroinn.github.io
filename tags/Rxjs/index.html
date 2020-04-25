@@ -11,15 +11,15 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="k8s," />
+    <meta name="keywords" content="" />
   
 
   
-    <meta name="description" content="kubectl命令行接口" />
+    <meta name="description" content="都怪宇宙," />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>kubectl命令行接口 [ 都怪宇宙 ]</title>
+  <title>tag: Rxjs [ 都怪宇宙 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -64,135 +64,22 @@
 
   <div class="container" id="content-outer">
     <div class="inner" id="content-inner">
-      <div class="post-container">
-  <article class="post" id="post">
-    <header class="post-header text-center">
-      <h1 class="title">
-        kubectl命令行接口
-      </h1>
-      <span>
-        
-        <time class="time" datetime="2020-04-24T15:05:40.000Z">
-        2020-04-24
+      
+<div class="page tag-page" id="tag">
+  <h3 title="Rxjs下的文章">Rxjs</h3>
+  
+    <div class="tag-item">
+      
+        <a href="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS/">
+          解谜RxJS
+        </a>
+      
+      <time class="time" datetime="2020-04-25T05:35:22.000Z">
+        2020-04-25
       </time>
-        
-      </span>
-      <span class="slash">/</span>
-      <span class="post-meta">
-      <span class="post-tags">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
-      </span>
-    </span>
-      <span class="slash">/</span>
-      <span class="read">
-      <span id="busuanzi_value_page_pv"></span> 点击
-    </span>
-    </header>
-
-    <div class="post-content">
-      <h1 id="kubectl命令行"><a href="#kubectl命令行" class="headerlink" title="kubectl命令行"></a>kubectl命令行</h1><p>kubectl作为客户端的CLI工具，可以让用户通过命令对kubernetes集群进行操作。</p>
-<h2 id="kubectl语法"><a href="#kubectl语法" class="headerlink" title="kubectl语法"></a>kubectl语法</h2><p><code>$ kubectl [command] [type] [name] [flags]</code></p>
-<ul>
-<li>command: 子命令，用于操作kubernetes集群资源对象的命令, create、delete、describe、get、apply、etc.</li>
-<li>type: 资源对象的类型。</li>
-<li>name: 资源对象的名称。</li>
-<li>flags: 子命令可选参数。</li>
-</ul>
-<h3 id="一条命令同时对多个资源对象进行操作"><a href="#一条命令同时对多个资源对象进行操作" class="headerlink" title="一条命令同时对多个资源对象进行操作"></a>一条命令同时对多个资源对象进行操作</h3><ul>
-<li><code>$ kubectl get pods pod1 pod2</code></li>
-<li><code>$ kubectl get pod/pod1 rc/rc1</code></li>
-<li><code>$ kubectl create -f pod1.yaml -f rc1.yaml -f server1.yaml</code></li>
-</ul>
-<h2 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h2><ul>
-<li>创建资源对象<ul>
-<li><code>$ kubectl create -f my-service.yaml -f my-rc.yaml</code></li>
-<li><code>$ kubectl create -f &lt;directory&gt;</code></li>
-</ul>
-</li>
-<li>查看资源对象<ul>
-<li><code>$ kubectl get pods</code></li>
-<li><code>$ kubectl get rc,service</code></li>
-</ul>
-</li>
-<li>描述资源对象<ul>
-<li><code>$ kubectl describe nodes &lt;node-name&gt;</code></li>
-<li><code>$ kubectl describe pods/&lt;pod-name&gt;</code></li>
-<li><code>$ kubectl describe pods &lt;rc-name&gt;</code></li>
-</ul>
-</li>
-<li>删除资源对象<ul>
-<li><code>$ kubectl delete -f pod.yaml</code></li>
-<li><code>$ kubectl delete pods,services -l name=&lt;label-name&gt;</code></li>
-<li><code>$ kubectl delete pods --all</code></li>
-</ul>
-</li>
-<li>执行容器命令<ul>
-<li><code>$ kubectl exec &lt;pod-name&gt; date</code></li>
-<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; date</code></li>
-<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; /bin/bash</code></li>
-</ul>
-</li>
-<li>查看容器日志<ul>
-<li><code>$ kubectl logs &lt;pod-name&gt;</code></li>
-<li><code>$ kubectl logs -f &lt;pod-name&gt; -c &lt;container-name&gt;</code></li>
-</ul>
-</li>
-<li>创建/更新资源对象<ul>
-<li><code>$ kubectl apply -f app.yaml</code></li>
-</ul>
-</li>
-<li>在线编辑运行中的资源对象<ul>
-<li><code>$ kubectl edit deploy nginx</code></li>
-</ul>
-</li>
-<li>将Pod的开放端口映射到本地<ul>
-<li><code>$ kubectl port-forward --address 0.0.0.0 pod/nginx-6ddbbc47fb-sfdcv 8888:80</code></li>
-</ul>
-</li>
-<li>在Pod和本地之间复制文件<ul>
-<li><code>$ kubectl cp nginx-6ddbbc47fb-sfdcv:/etc/fstab /tmp</code></li>
-</ul>
-</li>
-<li>资源对象的标签设置<ul>
-<li><code>$ kubectl label namespace default testing=true</code></li>
-</ul>
-</li>
-<li>检查可用的API资源类型列表<ul>
-<li><code>$ kubectl api-resources</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><p><code>$ kubectl help</code></br><br>在日常使用中多使用help来寻求帮助:)</p>
-
     </div>
-  </article>
-  <div class="toc-container">
-    
-  <div id="toc" class="toc-article">
-    <strong class="toc-title">Posts</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#kubectl命令行"><span class="toc-text">kubectl命令行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#kubectl语法"><span class="toc-text">kubectl语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一条命令同时对多个资源对象进行操作"><span class="toc-text">一条命令同时对多个资源对象进行操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用示例"><span class="toc-text">常用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#help"><span class="toc-text">help</span></a></li></ol></li></ol>
-  </div>
-
-
-  </div>
+  
 </div>
-  
-    <div class="post-nav">
-      <div class="post-nav-item post-nav-next">
-        
-      </div>
-  
-      <div class="post-nav-item post-nav-prev">
-          
-          <a href="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS/" rel="prev" title="解谜RxJS">
-            解谜RxJS
-          </a>
-          <span>〉</span>
-        
-      </div>
-    </div>
-  
-
     </div>
 
     
