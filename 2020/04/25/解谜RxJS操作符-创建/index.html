@@ -11,15 +11,15 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="Rxjs," />
+    <meta name="keywords" content="RxJS," />
   
 
   
-    <meta name="description" content="解谜Rxjs操作符" />
+    <meta name="description" content="解谜RxJS操作符-创建" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>解谜Rxjs操作符 [ 都怪宇宙 ]</title>
+  <title>解谜RxJS操作符-创建 [ 都怪宇宙 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -68,7 +68,7 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        解谜Rxjs操作符
+        解谜RxJS操作符-创建
       </h1>
       <span>
         
@@ -80,7 +80,7 @@
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rxjs/" rel="tag">Rxjs</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/" rel="tag">RxJS</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -94,10 +94,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; Observable.create(observer&#x3D;&gt;&#123;</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(1), 1000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(2), 2000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(3), 3000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.complete(), 4000);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const repeated$ &#x3D; source$.repeat(2);</span><br><span class="line"></span><br><span class="line">repeated$.subscribe(</span><br><span class="line">  console.log,</span><br><span class="line">  null,</span><br><span class="line">  () &#x3D;&gt; console.log(&#39;completed&#39;);</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 <p><strong><em>如果要重复3次,observer.complete()是关键。</em></strong></p>
 <h3 id="v4-vs-v5"><a href="#v4-vs-v5" class="headerlink" title="v4 vs v5"></a>v4 vs v5</h3><p>v4中repeat是一个静态操作符，接受两个参数，一个是需要重复的元素，另一个参数为重复的次数，功能很受限例如：<br><code>const $ = Rx.Observable.repeat(1,10);</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">st&#x3D;&gt;start: 开始</span><br><span class="line">op&#x3D;&gt;operation: My Operation</span><br><span class="line">cond&#x3D;&gt;condition: Yes or No?</span><br><span class="line">e&#x3D;&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br></pre></td></tr></table></figure>
-
-
-
 
     </div>
   </article>
@@ -124,6 +120,11 @@
   
       <div class="post-nav-item post-nav-prev">
           
+          <a href="/2020/04/29/%E8%A7%A3%E8%B0%9CRxJS%E6%93%8D%E4%BD%9C%E7%AC%A6-%E5%90%88%E5%B9%B6/" rel="prev" title="解谜RxJS操作符-合并">
+            解谜RxJS操作符-合并
+          </a>
+          <span>〉</span>
+        
       </div>
     </div>
   
