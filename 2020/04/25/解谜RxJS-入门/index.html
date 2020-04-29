@@ -11,15 +11,15 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="k8s," />
+    <meta name="keywords" content="RxJS," />
   
 
   
-    <meta name="description" content="kubectl命令行接口" />
+    <meta name="description" content="解谜RxJS-入门" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>kubectl命令行接口 [ 都怪宇宙 ]</title>
+  <title>解谜RxJS-入门 [ 都怪宇宙 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -68,19 +68,19 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        kubectl命令行接口
+        解谜RxJS-入门
       </h1>
       <span>
         
-        <time class="time" datetime="2020-04-24T15:05:40.000Z">
-        2020-04-24
+        <time class="time" datetime="2020-04-24T16:52:26.000Z">
+        2020-04-25
       </time>
         
       </span>
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/" rel="tag">k8s</a></li></ul>
+        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/" rel="tag">RxJS</a></li></ul>
       </span>
     </span>
       <span class="slash">/</span>
@@ -90,79 +90,35 @@
     </header>
 
     <div class="post-content">
-      <p>kubectl作为客户端的CLI工具，可以让用户通过命令对kubernetes集群进行操作。</p>
-<h2 id="kubectl语法"><a href="#kubectl语法" class="headerlink" title="kubectl语法"></a>kubectl语法</h2><p><code>$ kubectl [command] [type] [name] [flags]</code></p>
+      <p>RxJS 可以写出更短更内聚的代码，但是编写和理解的难度较大；Callback 版本虽然朴实无华，但是便于编写以及理解，可维护性更好。</p>
+<h2 id="Reactive-Extension"><a href="#Reactive-Extension" class="headerlink" title="Reactive Extension"></a>Reactive Extension</h2><blockquote>
+<p>An API for asynchronous programming with observable streams</p>
+</blockquote>
+<p>Reactive Extension(也叫ReactiveX),指的事实践响应式编程的一套工具，Rx扩展了那些不支持响应式编程的语言的功能，让开发者可以更方便地以函数式和响应式风格来开发应用。<br>函数响应式编程(Functional Reactive Programming)的优势</p>
 <ul>
-<li>command: 子命令，用于操作kubernetes集群资源对象的命令, create、delete、describe、get、apply、etc.</li>
-<li>type: 资源对象的类型。</li>
-<li>name: 资源对象的名称。</li>
-<li>flags: 子命令可选参数。</li>
+<li>数据流抽象了很多现实问题</li>
+<li>擅长处理一步操作</li>
+<li>吧复杂问题分解成简单问题</li>
 </ul>
-<h3 id="一条命令同时对多个资源对象进行操作"><a href="#一条命令同时对多个资源对象进行操作" class="headerlink" title="一条命令同时对多个资源对象进行操作"></a>一条命令同时对多个资源对象进行操作</h3><ul>
-<li><code>$ kubectl get pods pod1 pod2</code></li>
-<li><code>$ kubectl get pod/pod1 rc/rc1</code></li>
-<li><code>$ kubectl create -f pod1.yaml -f rc1.yaml -f server1.yaml</code></li>
+<h2 id="理解Observable与Observer"><a href="#理解Observable与Observer" class="headerlink" title="理解Observable与Observer"></a>理解Observable与Observer</h2><p>顾名思义，Observable就是“可被观察者（对象）”，Observer为“观察者”。<br>两者之间的桥梁为subscribe.为了让两者之间可以互动，Observable实现了下面两种设计模式：</p>
+<ul>
+<li>观察者模式(Observer Pattern)</li>
+<li>迭代器模式(Iterator Pattern)</li>
 </ul>
-<h2 id="常用示例"><a href="#常用示例" class="headerlink" title="常用示例"></a>常用示例</h2><ul>
-<li>创建资源对象<ul>
-<li><code>$ kubectl create -f my-service.yaml -f my-rc.yaml</code></li>
-<li><code>$ kubectl create -f &lt;directory&gt;</code></li>
+<p><strong>Observable = Publisher + Iterator</strong></p>
+<h2 id="Hot-Observable-与-Cold-Observable"><a href="#Hot-Observable-与-Cold-Observable" class="headerlink" title="Hot Observable 与 Cold Observable"></a>Hot Observable 与 Cold Observable</h2><blockquote>
+<p>Think of a hot Observable as a radio station. All of the listeners that are listening to it at this moment listen to the same song.<br>A cold Observable is a music CD. Many people can buy it and listen to it independently.<br>—Nickolay Tsvetinov</p>
+</blockquote>
+<h3 id="Hot-Observable"><a href="#Hot-Observable" class="headerlink" title="Hot Observable"></a>Hot Observable</h3><p>一旦Hot Observable被创建了，不管有没有订阅者，它们都会开始发送数据。<br>相同时间开始订阅的订阅者会得到同样的数据。<br>Cold Observable的创建就是一般的创建方法。API中提供了相关的方法能将Cold Observable转化为Hot Observable。</p>
+<h3 id="Cold-Observable"><a href="#Cold-Observable" class="headerlink" title="Cold Observable"></a>Cold Observable</h3><p>所有的Observable默认都是Cold Obserable。这就是说我们使用诸如Observable.create()或者Observable.fromArray()这类的方法所创建出来的Observable都是Cold Observable。<br>任何订阅Cold Observable的订阅者都会接收到独立的数据流。<br>如果没有订阅者订阅，它就什么事情也不会做，是被动的。</p>
+<h2 id="弹珠图-Marbles-Diagram"><a href="#弹珠图-Marbles-Diagram" class="headerlink" title="弹珠图(Marbles Diagram)"></a>弹珠图(Marbles Diagram)</h2><p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 475 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"></line><line x1="0" y1="26" x2="311.2778" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"></line><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"></path><line x1="311.2778" y1="3.5" x2="311.2778" y2="48.5" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"></line><g><g style="transform: translate(77.8778px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text></g><g style="transform: translate(155.6px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g><g style="transform: translate(233.4px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text></g><g style="transform: translate(311.2px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"></circle><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text></g></g><!-- react-empty: 482 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"></g></svg><br>RxJS中的Observable代表一个数据流.</p>
+<ul>
+<li>弹珠:每一个吐出来的数据</li>
+<li>间隔:数据与数据之间的时间间隔</li>
+<li>竖杠符号(|):代表数据流的完结(complete)</li>
+<li>x符号:代表数据流中的异常(error)</li>
 </ul>
-</li>
-<li>查看资源对象<ul>
-<li><code>$ kubectl get pods</code></li>
-<li><code>$ kubectl get rc,service</code></li>
-</ul>
-</li>
-<li>描述资源对象<ul>
-<li><code>$ kubectl describe nodes &lt;node-name&gt;</code></li>
-<li><code>$ kubectl describe pods/&lt;pod-name&gt;</code></li>
-<li><code>$ kubectl describe pods &lt;rc-name&gt;</code></li>
-</ul>
-</li>
-<li>删除资源对象<ul>
-<li><code>$ kubectl delete -f pod.yaml</code></li>
-<li><code>$ kubectl delete pods,services -l name=&lt;label-name&gt;</code></li>
-<li><code>$ kubectl delete pods --all</code></li>
-</ul>
-</li>
-<li>执行容器命令<ul>
-<li><code>$ kubectl exec &lt;pod-name&gt; date</code></li>
-<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; date</code></li>
-<li><code>$ kubectl exec &lt;pod-name&gt; -c &lt;container-name&gt; /bin/bash</code></li>
-</ul>
-</li>
-<li>查看容器日志<ul>
-<li><code>$ kubectl logs &lt;pod-name&gt;</code></li>
-<li><code>$ kubectl logs -f &lt;pod-name&gt; -c &lt;container-name&gt;</code></li>
-</ul>
-</li>
-<li>创建/更新资源对象<ul>
-<li><code>$ kubectl apply -f app.yaml</code></li>
-</ul>
-</li>
-<li>在线编辑运行中的资源对象<ul>
-<li><code>$ kubectl edit deploy nginx</code></li>
-</ul>
-</li>
-<li>将Pod的开放端口映射到本地<ul>
-<li><code>$ kubectl port-forward --address 0.0.0.0 pod/nginx-6ddbbc47fb-sfdcv 8888:80</code></li>
-</ul>
-</li>
-<li>在Pod和本地之间复制文件<ul>
-<li><code>$ kubectl cp nginx-6ddbbc47fb-sfdcv:/etc/fstab /tmp</code></li>
-</ul>
-</li>
-<li>资源对象的标签设置<ul>
-<li><code>$ kubectl label namespace default testing=true</code></li>
-</ul>
-</li>
-<li>检查可用的API资源类型列表<ul>
-<li><code>$ kubectl api-resources</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="help"><a href="#help" class="headerlink" title="help"></a>help</h2><p><code>$ kubectl help</code></br><br>在日常使用中多使用help来寻求帮助:)</p>
+<h2 id="弹珠图工具"><a href="#弹珠图工具" class="headerlink" title="弹珠图工具"></a>弹珠图工具</h2><p><a href="http://rxmarbles.com" target="_blank" rel="noopener">http://rxmarbles.com</a><br><a href="https://rxviz.com" target="_blank" rel="noopener">https://rxviz.com</a><br>在学习过程中借助工具能够加深对RxJS的理解。</p>
 
     </div>
   </article>
@@ -170,7 +126,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">Posts</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#kubectl语法"><span class="toc-text">kubectl语法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一条命令同时对多个资源对象进行操作"><span class="toc-text">一条命令同时对多个资源对象进行操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用示例"><span class="toc-text">常用示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#help"><span class="toc-text">help</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reactive-Extension"><span class="toc-text">Reactive Extension</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#理解Observable与Observer"><span class="toc-text">理解Observable与Observer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hot-Observable-与-Cold-Observable"><span class="toc-text">Hot Observable 与 Cold Observable</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hot-Observable"><span class="toc-text">Hot Observable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Cold-Observable"><span class="toc-text">Cold Observable</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹珠图-Marbles-Diagram"><span class="toc-text">弹珠图(Marbles Diagram)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#弹珠图工具"><span class="toc-text">弹珠图工具</span></a></li></ol>
   </div>
 
 
@@ -180,12 +136,17 @@
     <div class="post-nav">
       <div class="post-nav-item post-nav-next">
         
+          <span>〈 </span>
+          <a href="/2020/04/24/kubectl%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%8E%A5%E5%8F%A3/" rel="next" title="kubectl命令行接口">
+          kubectl命令行接口
+          </a>
+        
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS-%E5%85%A5%E9%97%A8/" rel="prev" title="解谜RxJS-入门">
-            解谜RxJS-入门
+          <a href="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS%E6%93%8D%E4%BD%9C%E7%AC%A6-%E5%88%9B%E5%BB%BA/" rel="prev" title="解谜RxJS操作符-创建">
+            解谜RxJS操作符-创建
           </a>
           <span>〉</span>
         
