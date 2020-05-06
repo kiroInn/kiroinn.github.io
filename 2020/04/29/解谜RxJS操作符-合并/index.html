@@ -131,13 +131,15 @@
 
 <h2 id="merge-先到先得快速通过"><a href="#merge-先到先得快速通过" class="headerlink" title="merge:先到先得快速通过"></a>merge:先到先得快速通过</h2><p>依次订阅上游Observable对象，把接收到的数据转给下游，等待所有上游对象Observable完结。<br>如果是同步数据流，表现与concat一致，应用<strong>异步数据流</strong>较好。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const source1$ &#x3D; Observable.timer(0,1000).map(x &#x3D;&gt; x + &#39;A&#39;));</span><br><span class="line">const source2$ &#x3D; Observable.timer(500,1000).map(x &#x3D;&gt; x + &#39;B&#39;));</span><br><span class="line">const merged$ &#x3D; source1$.merge(source1$, source2$);</span><br></pre></td></tr></table></figure>
+<h2 id="zip-拉链式组合"><a href="#zip-拉链式组合" class="headerlink" title="zip:拉链式组合"></a>zip:拉链式组合</h2><p><img src="/.com//zip.jpg" alt="zip"><br>zip的含义为<strong>“拉链”一对一的合并</strong>，zip只要给这完结的Observable对象吐出的所有数据找到配对的数据，那么zip就会给下游一个complete信号。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const source1$ &#x3D; Observable.of(1,2,3);</span><br><span class="line">const source2$ &#x3D; Observable.of(4,5,6);</span><br><span class="line">const zipped$ &#x3D; Observable.zip(source1$,source2$);</span><br></pre></td></tr></table></figure>
     </div>
   </article>
   <div class="toc-container">
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">Posts</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#concat-收尾相连"><span class="toc-text">concat:收尾相连</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#merge-先到先得快速通过"><span class="toc-text">merge:先到先得快速通过</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#concat-收尾相连"><span class="toc-text">concat:收尾相连</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#merge-先到先得快速通过"><span class="toc-text">merge:先到先得快速通过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#zip-拉链式组合"><span class="toc-text">zip:拉链式组合</span></a></li></ol>
   </div>
 
 
