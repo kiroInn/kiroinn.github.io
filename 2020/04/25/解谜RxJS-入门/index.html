@@ -87,14 +87,15 @@
 
     <div class="post-content">
       <p>RxJS 可以写出更短更内聚的代码，但是编写和理解的难度较大；Callback 版本虽然朴实无华，但是便于编写以及理解，可维护性更好。</p>
-<h2 id="Reactive-Extension"><a href="#Reactive-Extension" class="headerlink" title="Reactive Extension"></a>Reactive Extension</h2><blockquote>
+<h2 id="Reactive-Extension"><a href="#Reactive-Extension" class="headerlink" title="Reactive Extension"></a>Reactive Extension</h2><p><img src="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS-%E5%85%A5%E9%97%A8/assembly-line.jpeg" alt="assembly-line">  </p>
+<blockquote>
 <p>An API for asynchronous programming with observable streams</p>
 </blockquote>
 <p>Reactive Extension(也叫ReactiveX),指的事实践响应式编程的一套工具，Rx扩展了那些不支持响应式编程的语言的功能，让开发者可以更方便地以函数式和响应式风格来开发应用。<br>函数响应式编程(Functional Reactive Programming)的优势</p>
 <ul>
 <li>数据流抽象了很多现实问题</li>
 <li>擅长处理一步操作</li>
-<li>吧复杂问题分解成简单问题</li>
+<li>把复杂问题分解成简单问题</li>
 </ul>
 <h2 id="理解Observable与Observer"><a href="#理解Observable与Observer" class="headerlink" title="理解Observable与Observer"></a>理解Observable与Observer</h2><p>顾名思义，Observable就是“可被观察者（对象）”，Observer为“观察者”。<br>两者之间的桥梁为subscribe.为了让两者之间可以互动，Observable实现了下面两种设计模式：</p>
 <ul>
