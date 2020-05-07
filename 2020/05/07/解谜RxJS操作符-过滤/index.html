@@ -1,0 +1,331 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#202020"/>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+  
+  
+    <meta name="keywords" content="" />
+  
+
+  
+    <meta name="description" content="解谜RxJS操作符-过滤" />
+  
+  
+  <link rel="icon" type="image/x-icon" href="/logo.png">
+  <title>解谜RxJS操作符-过滤 [ 都怪宇宙 ]</title>
+  
+    <!-- stylesheets list from config.yml -->
+    
+      <link rel="stylesheet" href="//cdn.bootcss.com/pure/1.0.0/pure-min.css">
+    
+      <link rel="stylesheet" href="/css/xoxo.css">
+    
+  
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+  <div class="nav-container">
+    <nav class="home-menu pure-menu pure-menu-horizontal">
+  <a class="pure-menu-heading" href="/">
+    <img class="avatar" src="https://avatars0.githubusercontent.com/u/15043493?s=460&u=ed9d680f1c227c0b44332b8fbd0b343e7bc78678&v=4">
+    <span class="title">都怪宇宙</span>
+  </a>
+
+  <ul class="pure-menu-list clearfix">
+      
+          
+            <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/archives" class="pure-menu-link">Archives</a></li>
+          
+      
+          
+            <li class="pure-menu-item"><a href="/tags" class="pure-menu-link">Tags</a></li>
+          
+      
+  </ul>
+   
+</nav>
+  </div>
+
+  <div class="container" id="content-outer">
+    <div class="inner" id="content-inner">
+      <div class="post-container">
+  <article class="post" id="post">
+    <header class="post-header text-center">
+      <h1 class="title">
+        解谜RxJS操作符-过滤
+      </h1>
+      <span>
+        
+        <time class="time" datetime="2020-05-06T17:47:24.000Z">
+        2020-05-07
+      </time>
+        
+      </span>
+      <span class="slash">/</span>
+      <span class="post-meta">
+      <span class="post-tags">
+        
+      </span>
+    </span>
+      <span class="slash">/</span>
+      <span class="read">
+      <span id="busuanzi_value_page_pv"></span> 点击
+    </span>
+    </header>
+
+    <div class="post-content">
+      <p>当上游对象的吐出的数据，并不都是下游关心的，这时候就过滤操作符就派上用场了。</p>
+<table>
+<thead>
+<tr>
+<th align="center">适用操作符</th>
+<th align="center">功能需求</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">filter</td>
+<td align="center"><strong><em>过滤掉</em></strong>不满足判定条件的数据</td>
+</tr>
+<tr>
+<td align="center">first</td>
+<td align="center">获得满足判定条件的<strong><em>第一个</em></strong>数据</td>
+</tr>
+<tr>
+<td align="center">last</td>
+<td align="center">获得满足判定条件的<strong><em>最后一个</em></strong>数据</td>
+</tr>
+<tr>
+<td align="center">take</td>
+<td align="center">从数据流中<strong><em>选取</em></strong>最先出现的若干数据</td>
+</tr>
+</tbody></table>
+<p>所有的过滤类操作符都有判定函数参数，此外，有的过滤操作符还可以接受一个”结果选择器”(result selector)。</p>
+<h2 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h2><p>过滤操作符，用法也比较简单，只能传判定函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; interval(1000)</span><br><span class="line">source$.pipe(filter(x &#x3D;&gt; x % 2 &#x3D;&#x3D;&#x3D; 0))</span><br></pre></td></tr></table></figure>
+<p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 250 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="#000000" style="transition: fill 0.2s ease-in-out 0s;"/><!-- react-empty: 352 --><g><g style="transform: translate(48.8195px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text></g><g style="transform: translate(97.2986px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g><g style="transform: translate(145.972px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text></g><g style="transform: translate(194.597px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text></g><g style="transform: translate(243.174px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">4</text></g><g style="transform: translate(291.799px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">5</text></g><g style="transform: translate(340.424px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">6</text></g></g><!-- react-empty: 262 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg><br><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 250 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="#000000" style="transition: fill 0.2s ease-in-out 0s;"/><!-- react-empty: 352 --><g><g style="transform: translate(48.6736px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text></g><g style="transform: translate(145.875px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text></g><g style="transform: translate(243.125px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">4</text></g><g style="transform: translate(340.375px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">6</text></g></g><!-- react-empty: 262 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg></p>
+## first
+first可传可不传判定函数，不传就取上游Observable吐出数据的第一个。
+并且还支持第三个参数，当没有匹配的数据，可以填入默认数据。
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; of(3,1,4,5,9)</span><br><span class="line">source$.first(</span><br><span class="line">    x &#x3D;&gt; x &lt; 0,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 250 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="0.048625" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><!-- react-empty: 442 --><g><g style="transform: translate(0px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">...</text><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="transparent"/></g></g><g style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"><line x1="-8.951375" y1="17" x2="9.048625" y2="35" stroke-width="2" stroke="#000000"/><line x1="-8.951375" y1="35" x2="9.048625" y2="17" stroke-width="2" stroke="#000000"/><rect x="-8.951375" y="17" width="18" height="18" fill="transparent"/></g></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg>
+当没有值时，会返回EmptyError: no elements in sequence
+## last
+last与first正好相反，过滤的事一个Observable中最后一个判定数据
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; interval(1000).take(5)</span><br><span class="line">source$.last(x &gt; x % 2 &#x3D;&#x3D;&#x3D; 0)</span><br></pre></td></tr></table></figure>
+<svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 489 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="194.6167" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><line x1="194.61669999999998" y1="3.5" x2="194.61669999999998" y2="48.5" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"/><g><g style="transform: translate(194.539px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">4</text></g></g><!-- react-empty: 496 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg>
+
+<h2 id="take"><a href="#take" class="headerlink" title="take"></a>take</h2><p>take意为”拿”，从上游Observable拿数据，参数决定需要拿多少。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; interval(1000)</span><br><span class="line">source$.pipe(take(3))</span><br></pre></td></tr></table></figure>
+<p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 489 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="233.6334" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><line x1="233.6334" y1="3.5" x2="233.6334" y2="48.5" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"/><g><g style="transform: translate(78.0334px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text></g><g style="transform: translate(155.678px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g><g style="transform: translate(233.556px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text></g></g><!-- react-empty: 496 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg></p>
+<h2 id="takeUntil"><a href="#takeUntil" class="headerlink" title="takeUntil"></a>takeUntil</h2><p>在RxJS中，takeUntil是一个里程碑式的过滤操作符<br>它可以让我们用Observable对象来控制另一个Observable对象的数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; interval(1000)</span><br><span class="line">const notifier$ &#x3D; timer(2500)</span><br><span class="line">const takeUntil$ &#x3D; takeUntil(notifier$)</span><br></pre></td></tr></table></figure>
+<p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 489 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="243.125" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><line x1="243.125" y1="11" x2="243.125" y2="41" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"/><g><g style="transform: translate(97.3472px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">0</text></g><g style="transform: translate(194.5px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g></g><!-- react-empty: 496 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg></p>
+<h2 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h2><p>跳过前N个之后全拿</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; interval(1000)</span><br><span class="line">source$.pipe(take(5), skip(3))</span><br></pre></td></tr></table></figure>
+<p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 489 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="324.29633333333334" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><line x1="324.29633333333334" y1="3.5" x2="324.29633333333334" y2="48.5" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"/><g><g style="transform: translate(259.333px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text></g><g style="transform: translate(324.231px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">4</text></g></g><!-- react-empty: 496 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg></p>
+
+    </div>
+  </article>
+  <div class="toc-container">
+    
+  <div id="toc" class="toc-article">
+    <strong class="toc-title">Posts</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#filter"><span class="toc-text">filter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#take"><span class="toc-text">take</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#takeUntil"><span class="toc-text">takeUntil</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#skip"><span class="toc-text">skip</span></a></li></ol>
+  </div>
+
+
+  </div>
+</div>
+  
+    <div class="post-nav">
+      <div class="post-nav-item post-nav-next">
+        
+          <span>〈 </span>
+          <a href="/2020/05/07/%E8%A7%A3%E8%B0%9CRxJS%E6%93%8D%E4%BD%9C%E7%AC%A6-%E8%BE%85%E5%8A%A9/" rel="next" title="解谜RxJS操作符-辅助">
+          解谜RxJS操作符-辅助
+          </a>
+        
+      </div>
+  
+      <div class="post-nav-item post-nav-prev">
+          
+      </div>
+    </div>
+  
+
+    </div>
+
+    
+
+  </div>
+  <footer class="footer text-center">
+    <div id="bottom-inner">
+        <a class="bottom-item" href="http://kiroinn.github.io/" target="_self">首页</a> |
+        <a class="bottom-item" href="https://github.com/kiroinn" target="_self">GitHub</a> |
+        <a class="bottom-item">© 2020 Kiro Inn</a>
+    </div>
+</footer>
+  
+
+<script>
+  (function(window, document, undefined) {
+
+    var timer = null;
+
+    function returnTop() {
+      cancelAnimationFrame(timer);
+      timer = requestAnimationFrame(function fn() {
+        var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+        if (oTop > 0) {
+          document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+          timer = requestAnimationFrame(fn);
+        } else {
+          cancelAnimationFrame(timer);
+        }
+      });
+    }
+
+    var hearts = [];
+    window.requestAnimationFrame = (function() {
+      return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        function(callback) {
+          setTimeout(callback, 1000 / 60);
+        }
+    })();
+    init();
+
+    function init() {
+      css(".heart{z-index:9999;width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: absolute;}.heart:after{top: -5px;}.heart:before{left: -5px;}");
+      attachEvent();
+      gameloop();
+      addMenuEvent();
+    }
+
+    function gameloop() {
+      for (var i = 0; i < hearts.length; i++) {
+        if (hearts[i].alpha <= 0) {
+          document.body.removeChild(hearts[i].el);
+          hearts.splice(i, 1);
+          continue;
+        }
+        hearts[i].y--;
+        hearts[i].scale += 0.004;
+        hearts[i].alpha -= 0.013;
+        hearts[i].el.style.cssText = "left:" + hearts[i].x + "px;top:" + hearts[i].y + "px;opacity:" + hearts[i].alpha + ";transform:scale(" + hearts[i].scale + "," + hearts[i].scale + ") rotate(45deg);background:" + hearts[i].color;
+      }
+      requestAnimationFrame(gameloop);
+    }
+
+    /**
+     * 给logo设置点击事件
+     * 
+     * - 回到顶部
+     * - 出现爱心
+     */
+    function attachEvent() {
+      var old = typeof window.onclick === "function" && window.onclick;
+      var logo = document.getElementById("logo");
+      if (logo) {
+        logo.onclick = function(event) {
+          returnTop();
+          old && old();
+          createHeart(event);
+        }
+      }
+      
+    }
+
+    function createHeart(event) {
+      var d = document.createElement("div");
+      d.className = "heart";
+      hearts.push({
+        el: d,
+        x: event.clientX - 5,
+        y: event.clientY - 5,
+        scale: 1,
+        alpha: 1,
+        color: randomColor()
+      });
+      document.body.appendChild(d);
+    }
+
+    function css(css) {
+      var style = document.createElement("style");
+      style.type = "text/css";
+      try {
+        style.appendChild(document.createTextNode(css));
+      } catch (ex) {
+        style.styleSheet.cssText = css;
+      }
+      document.getElementsByTagName('head')[0].appendChild(style);
+    }
+
+    function randomColor() {
+      // return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + ")";
+      return "#F44336";
+    }
+
+    function addMenuEvent() {
+      var menu = document.getElementById('menu-main-post');
+      if (menu) {
+        var toc = document.getElementById('toc');
+        if (toc) {
+          menu.onclick = function() {
+            if (toc) {
+              if (toc.style.display == 'block') {
+                toc.style.display = 'none';
+              } else {
+                toc.style.display = 'block';
+              }
+            }
+          };
+        } else {
+          menu.style.display = 'none';
+        }
+      }
+    }
+
+  })(window, document);
+</script>
+
+  
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?FuckUBaidu";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+  <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'XXX', 'auto');
+      ga('send', 'pageview');
+  </script>
+
+
+</body>
+</html>
