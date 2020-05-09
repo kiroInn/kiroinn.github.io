@@ -11,15 +11,15 @@
   <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
   
   
-    <meta name="keywords" content="RxJS," />
+    <meta name="keywords" content="" />
   
 
   
-    <meta name="description" content="解谜RxJS操作符-创建" />
+    <meta name="description" content="程序员修炼之道" />
   
   
   <link rel="icon" type="image/x-icon" href="/logo.png">
-  <title>解谜RxJS操作符-创建 [ 都怪宇宙 ]</title>
+  <title>程序员修炼之道 [ 都怪宇宙 ]</title>
   
     <!-- stylesheets list from config.yml -->
     
@@ -68,19 +68,19 @@
   <article class="post" id="post">
     <header class="post-header text-center">
       <h1 class="title">
-        解谜RxJS操作符-创建
+        程序员修炼之道
       </h1>
       <span>
         
-        <time class="time" datetime="2020-04-25T05:35:22.000Z">
-        2020-04-25
+        <time class="time" datetime="2020-05-09T08:55:11.000Z">
+        2020-05-09
       </time>
         
       </span>
       <span class="slash">/</span>
       <span class="post-meta">
       <span class="post-tags">
-        <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RxJS/" rel="tag">RxJS</a></li></ul>
+        
       </span>
     </span>
       <span class="slash">/</span>
@@ -90,74 +90,19 @@
     </header>
 
     <div class="post-content">
-      <h2 id="创建操作符"><a href="#创建操作符" class="headerlink" title="创建操作符"></a>创建操作符</h2><table>
-<thead>
-<tr>
-<th align="center">适用操作符</th>
-<th align="center">功能需求</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">create</td>
-<td align="center">直接操作观察者</td>
-</tr>
-<tr>
-<td align="center">of</td>
-<td align="center">根据有限的数据产生同步数据流</td>
-</tr>
-<tr>
-<td align="center">range</td>
-<td align="center">产生一个数值范围内的数据</td>
-</tr>
-<tr>
-<td align="center">generate</td>
-<td align="center">以循环方式产生数据</td>
-</tr>
-<tr>
-<td align="center">repeat | repeatWhen</td>
-<td align="center">重复产生数据流中的数据</td>
-</tr>
-<tr>
-<td align="center">empty</td>
-<td align="center">产生空数据</td>
-</tr>
-<tr>
-<td align="center">throw</td>
-<td align="center">产生直接出错的数据流</td>
-</tr>
-<tr>
-<td align="center">never</td>
-<td align="center">产生永不完结的数据流</td>
-</tr>
-<tr>
-<td align="center">interval|timer</td>
-<td align="center">间隔给定时间持续产生数据</td>
-</tr>
-<tr>
-<td align="center">from</td>
-<td align="center">从数组等枚举类型数据产生数据流</td>
-</tr>
-<tr>
-<td align="center">fromPromise</td>
-<td align="center">从Promise对象产生数据流</td>
-</tr>
-<tr>
-<td align="center">fromEvent</td>
-<td align="center">从外部事件对象产生数据流</td>
-</tr>
-<tr>
-<td align="center">ajax</td>
-<td align="center">从Ajax请求结果产生数据流</td>
-</tr>
-<tr>
-<td align="center">defer</td>
-<td align="center">延迟产生数据流</td>
-</tr>
-</tbody></table>
-<h2 id="repeat-重复数据的数据流"><a href="#repeat-重复数据的数据流" class="headerlink" title="repeat:重复数据的数据流"></a>repeat:重复数据的数据流</h2><p>repeat是一个实例操作符,区别于静态操作符。<br>repeat的”重复功能”依赖于上游observable的完结时机。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const source$ &#x3D; Observable.create(observer&#x3D;&gt;&#123;</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(1), 1000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(2), 2000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.next(3), 3000);</span><br><span class="line">  setTimeout(() &#x3D;&gt; observer.complete(), 4000);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">const repeated$ &#x3D; source$.repeat(2);</span><br><span class="line"></span><br><span class="line">repeated$.subscribe(</span><br><span class="line">  console.log,</span><br><span class="line">  null,</span><br><span class="line">  () &#x3D;&gt; console.log(&#39;completed&#39;);</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p><svg width="420" height="63" style="display: block; font-size: 14px; font-family: Arial, sans-serif; dominant-baseline: central; text-anchor: middle; cursor: default; user-select: none;"><g transform="translate(0, 11)"><!-- react-empty: 10 --><g transform="translate(21, 0)"><line x1="0" y1="26" x2="389" y2="26" stroke-width="2" stroke="rgba(0, 0, 0, 0.2)" style="shape-rendering: crispedges;"/><line x1="0" y1="26" x2="311.2778" y2="26" stroke-width="2" stroke="#000000" style="shape-rendering: crispedges;"/><path transform="translate(389, 21)" d="M0 0 L10 5 L0 10 z" fill="rgba(0, 0, 0, 0.2)" style="transition: fill 0.2s ease-in-out 0s;"/><line x1="311.2778" y1="11" x2="311.2778" y2="41" stroke-width="2" stroke="#000000" style="opacity: 1; transition: opacity 0.5s ease-in-out 0s;"/><g><g style="transform: translate(77.8778px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">1</text></g><g style="transform: translate(155.756px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">2</text></g><g style="transform: translate(233.478px, 26px) scale(1); transition: transform 0.5s ease-in-out 0s;"><circle cx="0" cy="0" r="15" stroke-width="2" stroke="#000000" fill="#ffffff"/><text x="0" y="0" style="fill: rgb(0, 0, 0); dominant-baseline: central;">3</text></g></g><!-- react-empty: 17 --></g></g><g style="text-anchor: start; dominant-baseline: text-before-edge;"/></svg><br><strong><em>如果要重复3次,observer.complete()是关键。</em></strong></p>
-<h3 id="v4-vs-v5"><a href="#v4-vs-v5" class="headerlink" title="v4 vs v5"></a>v4 vs v5</h3><p>v4中repeat是一个静态操作符，接受两个参数，一个是需要重复的元素，另一个参数为重复的次数，功能很受限例如：<br><code>const $ = Rx.Observable.repeat(1,10);</code></p>
+      <h1 id="务实的哲学"><a href="#务实的哲学" class="headerlink" title="务实的哲学"></a>务实的哲学</h1><ul>
+<li>人生是你的</li>
+<li>我的源码被猫吃了</li>
+<li>软件的熵</li>
+<li>石头做的汤和煮熟的青蛙</li>
+<li>够好即可的软件</li>
+<li>知识组合</li>
+<li>交流<h1 id="务实的方法"><a href="#务实的方法" class="headerlink" title="务实的方法"></a>务实的方法</h1></li>
+<li>优秀设计的精髓<ul>
+<li>Easier To Change(ETC)</li>
+</ul>
+</li>
+</ul>
 
     </div>
   </article>
@@ -165,7 +110,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">Posts</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#创建操作符"><span class="toc-text">创建操作符</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#repeat-重复数据的数据流"><span class="toc-text">repeat:重复数据的数据流</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#v4-vs-v5"><span class="toc-text">v4 vs v5</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#务实的哲学"><span class="toc-text">务实的哲学</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#务实的方法"><span class="toc-text">务实的方法</span></a></li></ol>
   </div>
 
 
@@ -176,19 +121,14 @@
       <div class="post-nav-item post-nav-next">
         
           <span>〈 </span>
-          <a href="/2020/04/25/%E8%A7%A3%E8%B0%9CRxJS-%E5%85%A5%E9%97%A8/" rel="next" title="解谜RxJS-入门">
-          解谜RxJS-入门
+          <a href="/2020/05/07/%E8%A7%A3%E8%B0%9CRxJS%E6%93%8D%E4%BD%9C%E7%AC%A6-%E8%BF%87%E6%BB%A4/" rel="next" title="解谜RxJS操作符-过滤">
+          解谜RxJS操作符-过滤
           </a>
         
       </div>
   
       <div class="post-nav-item post-nav-prev">
           
-          <a href="/2020/04/29/%E8%A7%A3%E8%B0%9CRxJS%E6%93%8D%E4%BD%9C%E7%AC%A6-%E5%90%88%E5%B9%B6/" rel="prev" title="解谜RxJS操作符-合并">
-            解谜RxJS操作符-合并
-          </a>
-          <span>〉</span>
-        
       </div>
     </div>
   
