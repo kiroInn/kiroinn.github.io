@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>认识Cocos Creator</title>
+      <link href="/2020/06/07/%E8%AE%A4%E8%AF%86Cocos-Creator/"/>
+      <url>/2020/06/07/%E8%AE%A4%E8%AF%86Cocos-Creator/</url>
+      
+        <content type="html"><![CDATA[<h1 id="什么是Cocos-Creator"><a href="#什么是Cocos-Creator" class="headerlink" title="什么是Cocos Creator"></a>什么是Cocos Creator</h1><p>Cocos Creator是以游戏内容创作为核心的开发工具，基于Cocos2D-X引擎开发，实现了一体化，可扩展，可自定义工作流的编辑器，实现了开发的校本化，组件化，和数据驱动等特点。</p><h1 id="为什么选择Cocos-Creator"><a href="#为什么选择Cocos-Creator" class="headerlink" title="为什么选择Cocos Creator"></a>为什么选择Cocos Creator</h1><p>Cocos2D-X是一套开源的跨平台游戏开发框架，核心代码采用C++编写，提供C++,Lua,javascript三种编程语言接口</p><h2 id="Cocos-Creator与Cocos2D-X"><a href="#Cocos-Creator与Cocos2D-X" class="headerlink" title="Cocos Creator与Cocos2D-X"></a>Cocos Creator与Cocos2D-X</h2><table><thead><tr><th align="center">Cocos2D-X：</th><th align="center">Cocos Creator</th><th align="center">Unity</th></tr></thead><tbody><tr><td align="center">支持C++ lua javascript</td><td align="center">javascript</td><td align="center"></td></tr><tr><td align="center">2D</td><td align="center">2D</td><td align="center">3D</td></tr></tbody></table><h1 id="原生平台相关"><a href="#原生平台相关" class="headerlink" title="原生平台相关"></a>原生平台相关</h1><h2 id="Android平台"><a href="#Android平台" class="headerlink" title="Android平台"></a>Android平台</h2><p>Google将Java语言作为第三方应用的开发语言，并支持JNI（java native interface,java本地调用），Google Android发布NDK(native develop Kit,原生态本地开发包),支持C/C++语言开发Android程序。<br>NDK作为Android SDK的一个补充，增加了代码的重用性，提高了性能，由于IOS也支持C++，所以为了同时支持两个平台，Cocos2D-X选择C++作为主要的开发语言<br>Cocos Creator的Android导出环境需要如下</p><ul><li>JDK</li><li>Android Studio</li><li>Android SDK</li><li>Android NDK</li><li>Ant构建工具<h2 id="IOS平台"><a href="#IOS平台" class="headerlink" title="IOS平台"></a>IOS平台</h2></li><li>Xcode</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> cocos </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hello kubernetes</title>
       <link href="/2020/05/19/Hello-Kubernetes/"/>
       <url>/2020/05/19/Hello-Kubernetes/</url>
