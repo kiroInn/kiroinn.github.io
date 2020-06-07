@@ -118,7 +118,16 @@
 <li>Android SDK</li>
 <li>Android NDK</li>
 <li>Ant构建工具<h2 id="IOS平台"><a href="#IOS平台" class="headerlink" title="IOS平台"></a>IOS平台</h2></li>
-<li>Xcode</li>
+<li>Xcode<h2 id="HTML5"><a href="#HTML5" class="headerlink" title="HTML5"></a>HTML5</h2>Android与IOS都需要配置环境，而Web不需要。<br>HTML5的特点</li>
+<li>全新的机构内容元素</li>
+<li>全新的表单设计</li>
+<li>HTML5的媒体工程非常强大易用(audio video canvas)<br>可导出Web Desktop 或 Web Mobile<br>Desktop需要制定一个分辨率<h1 id="场景制作"><a href="#场景制作" class="headerlink" title="场景制作"></a>场景制作</h1>Cocos2D-X引擎作为一个机遇OpenGL ES的二维游戏引擎，主要功能将OpenGL的绘制功能封装在更加贴近游戏的对象里。<br>抽象出特殊的概念，例如导演，场景，布景层和人物精灵，用贴近游戏中的概念封装OpenGL的渲染。<br>Cocos Creator在Cocos2D-X的基础上又一次封装，使用”实体-组件”的方式扩充节点类。<h2 id="Cocos-Creator界面"><a href="#Cocos-Creator界面" class="headerlink" title="Cocos Creator界面"></a>Cocos Creator界面</h2></li>
+<li>资源管理器-显示了项目资源文件夹中的所有资源</li>
+<li>场景编辑器-用来展示和编辑场景中的内容</li>
+<li>属性检查器-查看并编辑当前选中节点和组件属性的工作区域<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2>在Cocos2D-X中，最小渲染单元就是节点类(Node),节点分为</li>
+<li>渲染节点，包括精灵，文本，富文本，地图，例子</li>
+<li>空节点</li>
+<li>UI节点，按钮，画布，列表，输入框<h2 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h2>可以通过编写脚本,内置组件为节点添加更多的功能<h1 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h1><h2 id="笛卡尔坐标系"><a href="#笛卡尔坐标系" class="headerlink" title="笛卡尔坐标系"></a>笛卡尔坐标系</h2>cocos2d-x以OpenGL ES为基础，坐标系的原点在屏幕左下角<h2 id="标准屏幕坐标系"><a href="#标准屏幕坐标系" class="headerlink" title="标准屏幕坐标系"></a>标准屏幕坐标系</h2>坐标系的原点在屏幕左上角<h2 id="世界坐标系"><a href="#世界坐标系" class="headerlink" title="世界坐标系"></a>世界坐标系</h2>也叫绝对坐标系<h2 id="本地坐标系"><a href="#本地坐标系" class="headerlink" title="本地坐标系"></a>本地坐标系</h2>相对坐标系<h2 id="节点的锚点"><a href="#节点的锚点" class="headerlink" title="节点的锚点"></a>节点的锚点</h2>锚点指定了贴图上和所在节点原地重合的点的位置，锚点的默认值(0.5,0.5)表示一个乘数因子，贴图的长度乘以0.5与宽度乘以0.5为贴图的中心。</li>
 </ul>
 
     </div>
@@ -127,7 +136,7 @@
     
   <div id="toc" class="toc-article">
     <strong class="toc-title">Posts</strong>
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Cocos-Creator"><span class="toc-text">什么是Cocos Creator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么选择Cocos-Creator"><span class="toc-text">为什么选择Cocos Creator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cocos-Creator与Cocos2D-X"><span class="toc-text">Cocos Creator与Cocos2D-X</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原生平台相关"><span class="toc-text">原生平台相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android平台"><span class="toc-text">Android平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOS平台"><span class="toc-text">IOS平台</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#什么是Cocos-Creator"><span class="toc-text">什么是Cocos Creator</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#为什么选择Cocos-Creator"><span class="toc-text">为什么选择Cocos Creator</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cocos-Creator与Cocos2D-X"><span class="toc-text">Cocos Creator与Cocos2D-X</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#原生平台相关"><span class="toc-text">原生平台相关</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Android平台"><span class="toc-text">Android平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IOS平台"><span class="toc-text">IOS平台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML5"><span class="toc-text">HTML5</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#场景制作"><span class="toc-text">场景制作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Cocos-Creator界面"><span class="toc-text">Cocos Creator界面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点"><span class="toc-text">节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#组件"><span class="toc-text">组件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#坐标系"><span class="toc-text">坐标系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#笛卡尔坐标系"><span class="toc-text">笛卡尔坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#标准屏幕坐标系"><span class="toc-text">标准屏幕坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#世界坐标系"><span class="toc-text">世界坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#本地坐标系"><span class="toc-text">本地坐标系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#节点的锚点"><span class="toc-text">节点的锚点</span></a></li></ol></li></ol>
   </div>
 
 
