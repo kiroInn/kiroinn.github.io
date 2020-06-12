@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.b93a68c2a451a899c7d9ce9fe70fe230.js"
+  "precache-manifest.02c92d961f42742e7ea1178b639f22ff.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "frontend"});
+workbox.core.setCacheNameDetails({prefix: "excelio"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
