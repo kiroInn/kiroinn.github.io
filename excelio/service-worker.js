@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.02c92d961f42742e7ea1178b639f22ff.js"
+  "precache-manifest.39063044fedde138d6e84674859d7fcd.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "excelio"});
